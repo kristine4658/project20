@@ -1,0 +1,70 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Corona</title>
+
+        <!-- d3.js -->
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script>
+          var mdata = "./data/total-cases-covid-for-map.csv"
+          var ldata = "./data/total-cases-covid-for-line.csv"
+          var covid = "./data/covid.csv"
+          var ebola = "./data/ebola.csv"
+          var h1n1 = "./data/h1n1.csv"
+          var mers = "./data/mers.csv"
+          var sars = "./data/sars.csv"
+        </script>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+      <header>
+        <h2>CORONA DASHBOARD</h2>
+      </header> 
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-9 col-md-7">
+            <div class="row">
+                <div id="legend"></div>
+                <div id="map" style="margin-top: 20px;"></div>
+                <button id="play-button" style="margin-top: -100px;">Play</button>
+                <div id="play" style="margin-bottom: -200px;"></div>
+                <div id="bar"></div>
+            </div>
+            <script type='text/javascript' src="./js/mapbar.js"></script>
+          </div>
+          <div class="col-xs-3 col-md-5">
+            <div class="row" style="margin-left: 20px; margin-top: 20px;">
+              <button class="btn btn-danger" style="font-size: 10px; margin-right:10px;" onclick="update(covid)">COVID-19</button>
+              <button class="btn btn-primary" style="font-size: 10px; margin-right:10px;" onclick="update(sars)">SARS</button>
+              <button class="btn btn-primary" style="font-size: 10px; margin-right:10px;" onclick="update(ebola)">EBOLA</button>
+              <button class="btn btn-primary" style="font-size: 10px; margin-right:10px;" onclick="update(mers)">MERS</button>
+              <button class="btn btn-primary" style="font-size: 10px; margin-right:10px;" onclick="update(h1n1)">H1N1</button>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+              <div id="line1"></div>
+            </div>
+            <script type='text/javascript' src="./js/virus.js"></script>
+            <div class="row" style="margin-left: 20px;">
+              <button class="btn btn-light" style="font-size: 12px; margin-right:10px;" onclick="selectType(0)">Linear</button>
+              <button class="btn btn-light" style="font-size: 12px; margin-right:10px;" onclick="selectType(1)">Log</button>
+            </div>
+            <div class="row">
+              <div id="line2"></div>
+            </div>
+            <script type='text/javascript' src="./js/multi2.js"></script>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
